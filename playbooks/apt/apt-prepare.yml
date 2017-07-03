@@ -1,0 +1,57 @@
+---
+- name: Prepare package management subsystem
+  hosts: aws
+#  hosts: apt-managed
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Import key Launchpad JDownloader PPA
+    apt_key:
+      state: present
+      keyserver: keyserver.ubuntu.com
+      id: 6A68F637
+  - name: Import key Docker Release Tool (releasedocker) <docker@docker.com>
+    apt_key:
+      state: present
+      keyserver: hkp://p80.pool.sks-keyservers.net:80
+      id: 58118E89F3A912897C070ADBF76221572C52609D
+  - name: Import key Google Inc. (Linux Packages Signing Authority) <linux-packages-keymaster@google.com>
+    apt_key:
+      state: present
+      url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+  - name: Import keys GetDeb Archive Automatic Signing Key <archive@getdeb.net>
+    apt_key:
+      state: present
+      url: http://archive.getdeb.net/getdeb-archive.key
+  - name: Intermediate cache update
+    apt:
+      update_cache: yes
+  - name: Intermediate cache update
+    apt:
+      package: add-apt-key
+  - name: Ubuntu keyring
+    apt:
+      package: ubuntu-keyring
+  - name: Ubuntu cloud keyring
+    apt:
+      package: ubuntu-cloud-keyring
+  - name: Ubuntu cloudimage keyring
+    apt:
+      package: ubuntu-cloudimage-keyring
+  - name: APT HTTP transport
+    apt:
+      package: apt-transport-https
+  - name: CA Certificates
+    apt:
+      package: ca-certificates
+  - name: CA Certificates
+    apt:
+      package: python-software-properties
+
+
+#  - name: Update with apt
+#    apt:
+#      upgrade: dist
+#      update_cache: yes
+#      dpkg_options: force-confold,force-confdef

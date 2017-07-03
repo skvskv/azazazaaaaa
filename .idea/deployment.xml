@@ -383,7 +383,7 @@
       <paths name="u1404-dev">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/op/kickstart-ansible/azazazaaaaa" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
