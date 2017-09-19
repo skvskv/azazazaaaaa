@@ -1,0 +1,242 @@
+---
+- name: Prepare package management subsystem (Common)
+  hosts: stc-webapp
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Intermediate cache update
+    apt:
+      update_cache: yes
+  - name: apt-show-source
+    apt:
+      package: apt-show-source
+  - name: apt-show-source
+    apt:
+      package: apt-show-versions
+  - name: apt-show-versions
+    apt:
+      package: apt-show-versions
+
+  - name: Arj
+    apt:
+      package: arj
+  - name: BZip2
+    apt:
+      package: bzip2
+  - name: Cabextract
+    apt:
+      package: cabextract
+  - name: Zip
+    apt:
+      package: zip
+  - name: Unzip
+    apt:
+      package: unzip
+  - name: Unrar
+    apt:
+      package: unrar
+  - name: lbzip2
+    apt:
+      package: lbzip2
+  - name: p7zip-full
+    apt:
+      package: p7zip-full
+  - name: p7zip-rar
+    apt:
+      package: p7zip-rar
+  - name: pigz
+    apt:
+      package: pigz
+  - name: pbzip2
+    apt:
+      package: pbzip2
+
+
+
+
+
+
+  - name: Tmux
+    apt:
+      package: tmux
+  - name: Screen
+    apt:
+      package: screen
+
+  - name: atop
+    apt:
+      package: atop
+  - name: iotop
+    apt:
+      package: iotop
+  - name: htop
+    apt:
+      package: htop
+  - name: ifstat
+    apt:
+      package: ifstat
+  - name: iftop
+    apt:
+      package: iftop
+  - name: dstat
+    apt:
+      package: dstat
+  - name: nethogs
+    apt:
+      package: nethogs
+
+
+  - name: curl
+    apt:
+      package: curl
+  - name: telnet
+    apt:
+      package: telnet
+  - name: wget
+    apt:
+      package: wget
+  - name: lftp
+    apt:
+      package: lftp
+  - name: lynx
+    apt:
+      package: lynx
+  - name: links
+    apt:
+      package: links
+  - name: socat
+    apt:
+      package: socat
+  - name: Netcat
+    apt:
+      package: netcat-openbsd
+
+
+
+  - name: bc
+    apt:
+      package: bc
+  - name: dos2unix
+    apt:
+      package: dos2unix
+  - name: sysv-rc-conf
+    apt:
+      package: sysv-rc-conf
+  - name: uudeview
+    apt:
+      package: uudeview
+  - name: pcregrep
+    apt:
+      package: pcregrep
+  - name: txt2regex
+    apt:
+      package: txt2regex
+  - name: checkinstall
+    apt:
+      package: checkinstall
+#  - name: bind-utils
+#    apt:
+#      package: bind9utils
+  - name: dnsutils
+    apt:
+      package: dnsutils
+  - name: hashalot
+    apt:
+      package: hashalot
+  - name: mc
+    apt:
+      package: mc
+  - name: mlocate
+    apt:
+      package: mlocate
+  - name: passwdqc
+    apt:
+      package: passwdqc
+  - name: pv
+    apt:
+      package: pv
+  - name: pwgen
+    apt:
+      package: pwgen
+
+
+  - name: build-essential
+    apt:
+      package: build-essential
+  - name: binwalk
+    apt:
+      package: binwalk
+  - name: Devscripts
+    apt:
+      package: devscripts
+  - name: dh-make
+    apt:
+      package: dh-make
+  - name: dh-make-perl
+    apt:
+      package: dh-make-perl
+  - name: dh-make-php
+    apt:
+      package: dh-make-php
+  - name: gcc
+    apt:
+      package: gcc
+  - name: gdb
+    apt:
+      package: gdb
+  - name: gdb
+    apt:
+      package: gdb
+  - name: check
+    apt:
+      package: check
+  - name: cdbs
+    apt:
+      package: cdbs
+
+  - name: Git
+    apt:
+      package: git
+  - name: git-all
+    apt:
+      package: git-all
+  - name: git-sh
+    apt:
+      package: git-sh
+  - name: git-svn
+    apt:
+      package: git-svn
+
+  - name: perl
+    apt:
+      package: perl
+  - name: python
+    apt:
+      package: python
+  - name: python-software-properties
+    apt:
+      package: python-software-properties
+
+
+  - name: inotify-tools
+    apt:
+      package: inotify-tools
+  - name: mcrypt
+    apt:
+      package: mcrypt
+  - name: mpack
+    apt:
+      package: mpack
+  - name: sharutils
+    apt:
+      package: sharutils
+  - name: openvpn
+    apt:
+      package: openvpn
+  - name: ppp
+    apt:
+      package: ppp
+  - name: pptp-linux
+    apt:
+      package: pptp-linux

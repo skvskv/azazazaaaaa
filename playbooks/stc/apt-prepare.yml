@@ -1,6 +1,6 @@
 ---
-- name: Prepare package management subsystem (Common)
-  hosts: aws
+- name: Install All Packages
+  hosts: stc-webapp
 #  hosts: apt-managed
   become: true
   become_user: root
@@ -27,18 +27,12 @@
   - name: Intermediate cache update
     apt:
       update_cache: yes
-  - name: Intermediate cache update
+  - name: Apt Helpers
     apt:
-      package: add-apt-key
-  - name: Ubuntu keyring
+      package: software-properties-common
+  - name: Apt Helpers
     apt:
-      package: ubuntu-keyring
-  - name: Ubuntu cloud keyring
-    apt:
-      package: ubuntu-cloud-keyring
-  - name: Ubuntu cloudimage keyring
-    apt:
-      package: ubuntu-cloudimage-keyring
+      package: python-software-properties
   - name: APT HTTP transport
     apt:
       package: apt-transport-https

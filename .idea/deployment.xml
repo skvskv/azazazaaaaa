@@ -23,6 +23,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="ashost.local">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/ansible/azaza" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="berkovitz">
         <serverdata>
           <mappings>
