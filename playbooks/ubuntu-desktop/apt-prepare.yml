@@ -1,0 +1,114 @@
+---
+- name: Prepare for apt-powered software installation
+  hosts: kshpolvind-laptop.local, xentest.local
+#  hosts: apt-managed
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Import key Launchpad JDownloader PPA
+    apt_key:
+      state: present
+      keyserver: keyserver.ubuntu.com
+      id: 6A68F637
+  - name: Docker CE Key
+    apt_key:
+      state: present
+      url: https://download.docker.com/linux/ubuntu/gpg
+  - name: Import key Google Inc. (Linux Packages Signing Authority) <linux-packages-keymaster@google.com>
+    apt_key:
+      state: present
+      url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+  - name: Import keys GetDeb Archive Automatic Signing Key <archive@getdeb.net>
+    apt_key:
+      state: present
+      url: http://archive.getdeb.net/getdeb-archive.key
+  - name: Import Oracle VirtualBox Key
+    apt_key:
+      state: present
+      url: http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.asc
+#  - name: Vagrant index repo (by Wolfgang Faust) Key
+#    apt_key:
+#      state: present
+#      keyserver: pgp.mit.edu
+#      id: AD319E0F7CFFA38B4D9F6E55CE3F3DE92099F7A4
+  - name: Opera Key
+    apt_key:
+      state: present
+      url: https://deb.opera.com/archive.key
+  - name: PostgreSQL Key
+    apt_key:
+      state: present
+      url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+  - name: Nginx
+    apt_key:
+      state: present
+      url: https://nginx.ru/keys/nginx_signing.key
+  - name: Intermediate cache update
+    apt:
+      update_cache: yes
+  - name: Apt Helpers
+    apt:
+      package: software-properties-common
+  - name: Apt Helpers
+    apt:
+      package: python-software-properties
+  - name: APT HTTP transport
+    apt:
+      package: apt-transport-https
+  - name: CA Certificates
+    apt:
+      package: ca-certificates
+  - name: CA Certificates
+    apt:
+      package: python-software-properties
+
+  - name: GetDeb (http://www.getdeb.net)
+    apt_repository:
+      repo: deb http://archive.getdeb.net/ubuntu xenial-getdeb apps
+  - name: JDownloader PPA@Launchpad
+    apt_repository:
+      repo: deb http://ppa.launchpad.net/jd-team/jdownloader/ubuntu xenial main
+  - name: JDownloader PPA@Launchpad
+    apt_repository:
+      repo: deb http://ppa.launchpad.net/jd-team/jdownloader/ubuntu xenial main
+  - name: JDownloader PPA@Launchpad
+    apt_repository:
+      repo: deb-src http://ppa.launchpad.net/jd-team/jdownloader/ubuntu xenial main
+  - name: Nginx Src Official Apt Source
+    apt_repository:
+      repo: deb-src http://nginx.org/packages/ubuntu/ xenial nginx
+  - name: Nginx Official Apt Source
+    apt_repository:
+      repo: deb http://nginx.org/packages/ubuntu/ xenial nginx
+#  - name: Nginx PPA
+#    apt_repository:
+#      repo: ppa:nginx/stable
+  - name: PHP PPA by Ondrej
+    apt_repository:
+      repo: ppa:ondrej/php
+  - name: Longsleep Golang PPA
+    apt_repository:
+      repo: ppa:longsleep/golang-backports
+  - name: PostgreSQL Apt Source
+    apt_repository:
+      repo: deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main
+  - name: Docker CE Repo
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+  - name: Oracle VirtualBox repo
+    apt_repository:
+      repo: deb http://download.virtualbox.org/virtualbox/debian xenial non-free contrib
+  ## Not sure if it's worth
+#  - name: Vagrant index repo by Wolfgang Faust
+#    apt_repository:
+#      repo: deb https://vagrant-deb.linestarve.com/ any main
+  - name: Opera
+    apt_repository:
+      repo: deb https://deb.opera.com/opera-stable/ stable non-free
+
+#  - name: Update with apt
+#    apt:
+#      upgrade: dist
+#      update_cache: yes
+#      dpkg_options: force-confold,force-confdef

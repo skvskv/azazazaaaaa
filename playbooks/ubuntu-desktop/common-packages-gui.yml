@@ -1,0 +1,87 @@
+---
+- name: Prepare package management subsystem (Common)
+  hosts: kshpolvind-laptop.local, xentest.local
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Intermediate cache update
+    apt:
+      update_cache: yes
+  - name: wmctrl
+    apt:
+      package: wmctrl
+  - name: Wireshark
+    apt:
+      package: wireshark
+  - name: Chromium
+    apt:
+      package: chromium-browser
+  - name: Chromium WebDriver
+    apt:
+      package: chromium-chromedriver
+  - name: Chromium Codecs FFMPEG
+    apt:
+      package: chromium-codecs-ffmpeg
+  - name: Chromium Codecs FFMPEG Extra
+    apt:
+      package: chromium-codecs-ffmpeg-extra
+
+  - name: Opera Stable
+    apt:
+      package: opera-stable
+
+  - name: Firefox
+    apt:
+      package: firefox
+  - name: Firefox EN
+    apt:
+      package: firefox-locale-en
+  - name: Firefox RU
+    apt:
+      package: firefox-locale-ru
+
+
+  - name: Pepper Flash Plugin (install)
+    apt:
+      package: pepperflashplugin-nonfree
+
+  - name: Pepper Flash Plugin (update)
+    command: update-pepperflashplugin-nonfree --install
+  - name: VLC
+    apt:
+      package: vlc
+  - name: VLC (browser plugin)
+    apt:
+      package: browser-plugin-vlc
+
+  - name: VirtualBox
+    apt:
+      package: virtualbox
+  - name: VirtualBox Ext Pack
+    apt:
+      package: virtualbox-ext-pack
+  - name: VirtualBox Guest Utils (non-x11)
+    apt:
+      package: virtualbox-guest-utils
+  - name: Vagrant
+    apt:
+      package: vagrant
+  - name: Docker CE
+    apt:
+      package: docker-ce
+  - name: PostgreSQL Client
+    apt:
+      package: postgresql-client
+  - name: PostgreSQL Server
+    apt:
+      package: postgresql
+  - name: PostgreSQL Contrib
+    apt:
+      package: postgresql-contrib
+  - name: Golang
+    apt:
+      package: golang-go
+  - name: LibreOffice
+    apt:
+      package: libreoffice

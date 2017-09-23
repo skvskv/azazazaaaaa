@@ -1,0 +1,252 @@
+---
+- name: Prepare package management subsystem (Common)
+  hosts: kshpolvind-laptop.local, xentest.local
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Intermediate cache update
+    apt:
+      update_cache: yes
+
+  - name: apt-show-versions
+    apt:
+      package: apt-show-versions
+  - name: apt-show-source
+    apt:
+      package: apt-show-source
+
+  - name: vim
+    apt:
+      package: vim
+
+  - name: Preparing to deal with dumb runit
+    set_fact:
+      runit_shits: False
+    cacheable: false
+
+  - name: Install (probably dumb) runit
+    apt:
+      package: runit
+    register: command_result
+    ignore_errors: True
+
+    # !!! BEWARE UGLY SHIT:
+    #     it will NOT work as `set_fact: runit_shits='true'`
+  - name: See if the runit was dumb enough to fail to configure itself
+    set_fact:
+      runit_shits: True
+    when: command_result.failed
+    cacheable: false
+
+    # !!! BEWARE UGLY SHIT:
+    # it will NOT work as:
+    # debug:
+    #   var: runit_shits
+  - name: Debug Fucking Ansible Fact
+    debug: var=runit_shits
+
+  - name: Fix this shit if necessary
+    command: 'sed -i  -r "s@(/sbin/start runsvdir)@    true #\1@g"  /var/lib/dpkg/info/runit.postinst'
+    when: runit_shits
+
+  - name: Make this shit reconfigure
+    command: dpkg --configure -a
+    when: runit_shits
+
+  - name: python
+    apt:
+      package: python
+  - name: python-software-properties
+    apt:
+      package: python-software-properties
+  - name: software-properties-common
+    apt:
+      package: software-properties-common
+
+  - name: htop
+    apt:
+      package: htop
+  - name: atop
+    apt:
+      package: atop
+  - name: dstat
+    apt:
+      package: dstat
+  - name: iotop
+    apt:
+      package: iotop
+  - name: iftop
+    apt:
+      package: iftop
+  - name: nethogs
+    apt:
+      package: nethogs
+  - name: ifstat
+    apt:
+      package: ifstat
+
+  - name: hashalot
+    apt:
+      package: hashalot
+  - name: pwgen
+    apt:
+      package: pwgen
+  - name: passwdqc
+    apt:
+      package: passwdqc
+
+  - name: zip
+    apt:
+      package: zip
+  - name: unzip
+    apt:
+      package: unzip
+  - name: unrar
+    apt:
+      package: unrar
+  - name: p7zip-full
+    apt:
+      package: p7zip-full
+  - name: p7zip-rar
+    apt:
+      package: p7zip-rar
+  - name: arj
+    apt:
+      package: arj
+  - name: lbzip2
+    apt:
+      package: lbzip2
+  - name: pbzip2
+    apt:
+      package: pbzip2
+  - name: pigz
+    apt:
+      package: pigz
+
+  - name: uudeview
+    apt:
+      package: uudeview
+  - name: cabextract
+    apt:
+      package: cabextract
+
+  - name: sharutils
+    apt:
+      package: sharutils
+  - name: pv
+    apt:
+      package: pv
+  - name: mpack
+    apt:
+      package: mpack
+  - name: curl
+    apt:
+      package: curl
+  - name: wget
+    apt:
+      package: wget
+  - name: nmap
+    apt:
+      package: nmap
+  - name: tshark
+    apt:
+      package: tshark
+  - name: mc
+    apt:
+      package: mc
+  - name: links
+    apt:
+      package: links
+  - name: lynx
+    apt:
+      package: lynx
+  - name: screen
+    apt:
+      package: screen
+  - name: tmux
+    apt:
+      package: tmux
+  - name: dos2unix
+    apt:
+      package: dos2unix
+  - name: lftp
+    apt:
+      package: lftp
+
+  - name: ppp
+    apt:
+      package: ppp
+  - name: openvpn
+    apt:
+      package: openvpn
+  - name: pptp-linux
+    apt:
+      package: pptp-linux
+
+  - name: checkinstall
+    apt:
+      package: checkinstall
+  - name: sysv-rc-conf
+    apt:
+      package: sysv-rc-conf
+  - name: mcrypt
+    apt:
+      package: mcrypt
+  - name: gcc
+    apt:
+      package: gcc
+  - name: gdb
+    apt:
+      package: gdb
+  - name: binwalk
+    apt:
+      package: binwalk
+  - name: check
+    apt:
+      package: check
+  - name: perl
+    apt:
+      package: perl
+  - name: git
+    apt:
+      package: git
+  - name: git-sh
+    apt:
+      package: git-sh
+  - name: git-svn
+    apt:
+      package: git-svn
+  - name: git-all
+    apt:
+      package: git-all
+  - name: devscripts
+    apt:
+      package: devscripts
+  - name: dh-make
+    apt:
+      package: dh-make
+  - name: dh-make-perl
+    apt:
+      package: dh-make-perl
+  - name: build-essential
+    apt:
+      package: build-essential
+  - name: inotify-tools
+    apt:
+      package: inotify-tools
+  - name: util-linux
+    apt:
+      package: util-linux
+  - name: util-linux
+    apt:
+      package: util-linux
+  - name: pcregrep
+    apt:
+      package: pcregrep
+  - name: txt2regex
+    apt:
+      package: txt2regex
+  - name: cdbs
+    apt:
+      package: cdbs

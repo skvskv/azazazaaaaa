@@ -1,0 +1,151 @@
+---
+- name: Prepare package management subsystem (Common)
+  hosts: kshpolvind-laptop.local, xentest.local
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Intermediate cache update
+    apt:
+      update_cache: yes
+  - name: Nginx
+    apt:
+      package: nginx
+      state: absent
+  - name: Nginx Extras
+    apt:
+      package: nginx-extras
+  - name: Nginx doc
+    apt:
+      package: nginx-doc
+  - name: FastCGI Wrapper for regular CGI Scripts
+    apt:
+      package: fcgiwrap
+  - name: Redis Client
+    apt:
+      package: redis-tools
+  - name: Redis Server
+    apt:
+      package: redis-server
+  - name: MemcacheD
+    apt:
+      package: memcached
+
+  - name: NodeJS
+    apt:
+      package: nodejs
+
+  - name: NGinx
+    apt:
+      package: php-fpm
+
+
+  - name: PHP fpm
+    apt:
+      package: php-fpm
+  - name: PHP Dev
+    ignore_errors: True
+    apt:
+      package: php-dev
+  - name: PHP Dbg
+    ignore_errors: True
+    apt:
+      package: php-dbg
+  - name: PHP Pear
+    ignore_errors: True
+    apt:
+      package: php-pear
+  - name: PHP Zip
+    ignore_errors: True
+    apt:
+      package: php-zip
+  - name: PHP Bzip2
+    ignore_errors: True
+    apt:
+      package: php-bz2
+  - name: PHP Redis
+    ignore_errors: True
+    apt:
+      package: php-redis
+  - name: PHP Curl
+    ignore_errors: True
+    apt:
+      package: php-curl
+  - name: PHP Memmcached
+    ignore_errors: True
+    apt:
+      package: php-memcached
+  - name: PHP GD
+    ignore_errors: True
+    apt:
+      package: php-gd
+  - name: PHP Imagick
+    ignore_errors: True
+    apt:
+      package: php-imagick
+  - name: PHP Internationalization
+    ignore_errors: True
+    apt:
+      package: php-intl
+  - name: PHP MBString
+    ignore_errors: True
+    apt:
+      package: php-mbstring
+  - name: PHP MCrypt
+    ignore_errors: True
+    apt:
+      package: php-mcrypt
+  - name: PHP PgSql
+    ignore_errors: True
+    apt:
+      package: php-pgsql
+  - name: PHP MySQL
+    ignore_errors: True
+    apt:
+      package: php-mysql
+  - name: PHP SQLite3
+    ignore_errors: True
+    apt:
+      package: php-sqlite3
+  - name: PHP SOAP
+    ignore_errors: True
+    apt:
+      package: php-soap
+  - name: PHP SSH2
+    ignore_errors: True
+    apt:
+      package: php-ssh2
+  - name: PHP JSON
+    ignore_errors: True
+    apt:
+      package: php-json
+  - name: PHP XML
+    ignore_errors: True
+    apt:
+      package: php-xml
+  - name: PHP XSL
+    ignore_errors: True
+    apt:
+      package: php-xsl
+  - name: PHP XML-RPC
+    ignore_errors: True
+    apt:
+      package: php-xmlrpc
+  - name: PHP IMAP
+    ignore_errors: True
+    apt:
+      package: php-imap
+  - name: PHP Enchant
+    ignore_errors: True
+    apt:
+      package: php-enchant
+  - name: PHP Tidy
+    ignore_errors: True
+    apt:
+      package: php-tidy
+  - name: PHP XDebug
+    ignore_errors: True
+    apt:
+      package: php-xdebug
+
+
