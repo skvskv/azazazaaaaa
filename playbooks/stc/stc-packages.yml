@@ -1,0 +1,169 @@
+---
+- name: Prepare package management subsystem (Common)
+  hosts: stc-webapp
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Intermediate cache update
+    apt:
+      update_cache: yes
+  - name: Fonts Droid
+    apt:
+      package: fonts-droid
+  - name: Ghostscript
+    apt:
+      package: ghostscript
+  - name: DJVU Core TTF
+    apt:
+      package: ttf-dejavu-core
+  - name: GS Fonts
+    apt:
+      package: gsfonts
+  - name: Git
+    apt:
+      package: git
+  - name: Git Man
+    apt:
+      package: git-man
+  - name: ImageMagick Common
+    apt:
+      package: imagemagick-common
+  - name: Apparmor lib
+    apt:
+      package: libapparmor1
+  - name: CUPS Filters lib
+    apt:
+      package: libcupsfilters1
+  - name: CUPS Image lib
+    apt:
+      package: libcupsimage2
+  - name: PERL Liberror
+    apt:
+      package: liberror-perl
+  - name: FFT lib
+    apt:
+      package: libfftw3-double3
+  - name: GD lib
+    apt:
+      package: libgd3
+  - name: GS9 lib
+    apt:
+      package: libgs9
+  - name: GS9 lib common
+    apt:
+      package: libgs9-common
+  - name: IJS
+    apt:
+      package: libijs-0.35
+  - name: JBig
+    apt:
+      package: libjbig2dec0
+  - name: LQR
+    apt:
+      package: liblqr-1-0
+  - name: LTDL7
+    apt:
+      package: libltdl7
+  - name: MagickCore
+    apt:
+      package: libmagickcore-6.q16-2
+  - name: MagickWand
+    apt:
+      package: libmagickwand-6.q16-2
+  - name: MCrypt
+    apt:
+      package: libmcrypt4
+  - name: MemCacheD lib
+    apt:
+      package: libmemcached11
+  - name: MemCacheD Util lib
+    apt:
+      package: libmemcachedutil2
+  - name: Onig2
+    apt:
+      package: libonig2
+  - name: PGM
+    apt:
+      package: libpgm-5.1-0
+  - name: PQ5
+    apt:
+      package: libpq5
+  - name: QDBM14
+    apt:
+      package: libqdbm14
+  - name: Sodium 13
+    apt:
+      package: libsodium13
+  - name: VPX1
+    apt:
+      package: libvpx1
+  - name: XPM4
+    apt:
+      package: libxpm4
+  - name: XSLT lib
+    apt:
+      package: libxslt1.1
+  - name: ZMQ3 lib
+    apt:
+      package: libzmq3
+  - name: NGINX Common
+    apt:
+      package: nginx-common
+  - name: NGINX Full
+    apt:
+      package: nginx-full
+  - name: Open NTPD
+    apt:
+      package: openntpd
+  - name: PHP PEAR
+    apt:
+      package: php-pear
+  - name: PHP CLI
+    apt:
+      package: php5-cli
+  - name: PHP Common
+    apt:
+      package: php5-common
+  - name: PHP CURL
+    apt:
+      package: php5-curl
+  - name: PHP FPM
+    apt:
+      package: php5-fpm
+  - name: PHP GD
+    apt:
+      package: php5-gd
+  - name: PHP GeoIP
+    apt:
+      package: php5-geoip
+  - name: PHP GeoIP
+    apt:
+      package: php5-imagick
+  - name: PHP GeoIP
+    apt:
+      package: php5-intl
+  - name: PHP JSON
+    apt:
+      package: php5-json
+  - name: PHP PGSQL
+    apt:
+      package: php5-pgsql
+  - name: PHP Readline
+    apt:
+      package: php5-readline
+  - name: PHP Readline
+    apt:
+      package: php5-zmq
+  - name: Poppler Data
+    apt:
+      package: poppler-data
+  - name: Python Meld3
+    apt:
+      package: python-meld3
+  - name: Python Meld3
+    apt:
+      package: ssl-cert
+  - name: Supervisor
+    apt:
+      package: supervisor

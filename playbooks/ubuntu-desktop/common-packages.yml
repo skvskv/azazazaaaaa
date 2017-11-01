@@ -177,6 +177,10 @@
   - name: ppp
     apt:
       package: ppp
+  - name: easy-rsa
+    ignore_errors: True
+    apt:
+      package: easy_rsa
   - name: openvpn
     apt:
       package: openvpn
